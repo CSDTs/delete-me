@@ -71,22 +71,25 @@
 				}
 			],
 			"plugins": [
-				[
-					"@electron-forge/plugin-webpack",
-					{
+				{
+					"name": "@electron-forge/plugin-webpack",
+					"config": {
 						"mainConfig": "./webpack.main.config.js",
 						"renderer": {
 							"config": "./webpack.renderer.config.js",
 							"entryPoints": [
 								{
-									"html": "./src/index.html",
-									"js": "./src/renderer.js",
-									"name": "main"
+									"name": "main_window",
+									"html": "./src/renderer/index.html",
+									"js": "./src/renderer/index.js",
+									"preload": {
+										"js": "./src/preload.js"
+									}
 								}
 							]
 						}
 					}
-				]
+				}
 			]
 		}
 	}
